@@ -24,7 +24,7 @@
 
 
 - Wie muss man den Source Code des Interface ggf. anpassen, um mögliche auftretende Kompilierfehler zu beseitigen?
-  - Um mögliche Kompilierfehler zu beheben und das Interface Translator in anderen Paketen verwenden zu können, muss die Sichtbarkeit des Interfaces auf "public" sein. Dies ermöglicht es, das Interface 
+  - Um mögliche Kompilierfehler zu beheben und das Interface Translator in anderen Paketen verwenden zu können, muss die Sichtbarkeit des Interfaces auf public sein. Dies ermöglicht es, das Interface 
   überall im Code verwenden zu können.
 ---
 
@@ -41,5 +41,5 @@
 
 
 - Warum ist ein Blackbox-Test mit JUnit auf der Klasse Client nicht unmittelbar durchführbar?
-  - Ein Blackbox-Test auf der Klasse Client ist schwierig, da wir nicht den genauen Code des Übersetzers kennen und daher keine direkte 
+  - Ein Blackbox-Test auf der Klasse Client ist schwierig, da wir nicht den genauen Code des Translator kennen und daher keine direkte 
   Kontrolle darüber haben. 
