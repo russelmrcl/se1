@@ -1,4 +1,4 @@
-<h2 style="text-align: center"> Software Engineering 1 WS 2023 / 2024 </h2>
+## Software Engineering 1 WS 2023 / 2024 
 
 ---
 
