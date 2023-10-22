@@ -61,7 +61,7 @@ die Testabdeckung zu verbessern.
   <br />
   <br />
 JUnit bietet keine Möglichkeit Systemausgaben zu testen. Da die einzige Methode `display` im Client einen `void`
-Rückgabetyp hat, ist es schwer, den Inhalt wirklich zu testen.
+Rückgabetyp hat, ist es nicht möglich den, den Inhalt zu testen.
 ---
 ### UML-Diagramm
 
