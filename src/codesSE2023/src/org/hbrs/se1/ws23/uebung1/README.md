@@ -4,7 +4,7 @@
 
 ---
 
-### Die Antworten zur Aufgabe 1.
+### Die Antworten zur Aufgabe 1
 
 - *Wie kann eine zusätzliche Klasse zur Objekt-Erzeugung verwendet <br />
 werden, um die Kommunikationsverbindung*
