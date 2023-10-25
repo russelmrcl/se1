@@ -7,8 +7,8 @@
 ### Die Antworten zur Aufgabe 1
 
 - *Wie kann eine zusätzliche Klasse zur Objekt-Erzeugung verwendet <br />
-werden, um die Kommunikationsverbindung*
-herzustellen?
+werden, um die Kommunikationsverbindung
+herzustellen?*
   <br />
   <br />
 Man kann eine Factory-Klasse verwenden, die Factory-Klasse übernimmt <br /> die Erzeugung und Bereitstellung von 
@@ -60,8 +60,8 @@ die Testabdeckung zu verbessern.
 - *Warum ist ein Blackbox-Test mit JUnit auf der Klasse Client nicht unmittelbar durchführbar?*
   <br />
   <br />
-JUnit bietet keine Möglichkeit Systemausgaben zu testen. Da die einzige Methode `display` im Client einen `void`
-Rückgabetyp hat, ist es nicht möglich den, den Inhalt zu testen.
+JUnit bietet keine Möglichkeit Systemausgaben zu testen (`System.out.println(...)`). Da die einzige Methode `display` im Client einen `void`
+Rückgabetyp hat, ist es nicht möglich den Inhalt zu testen.
 ---
 ### UML-Diagramm
 
