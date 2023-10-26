@@ -30,8 +30,8 @@ class ContainerTest {
 
         assertThrows(Exception.class, () -> container.addMember(memberOne));
         assertThrows(Exception.class, () -> container.addMember(null)) ;
-        assertEquals(1, container.size());
         assertNotEquals(3, container.size());
+        assertEquals(1, container.size());
     }
 
 
