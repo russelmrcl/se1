@@ -11,5 +11,4 @@ public class MemberView {
             System.out.println(member.toString());
         }
     }
-
 }

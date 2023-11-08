@@ -1,14 +1,11 @@
 package org.hbrs.se1.ws23.uebung3.test;
 
 import org.hbrs.se1.ws23.uebung3.ConcreteMember;
-import org.hbrs.se1.ws23.uebung3.Member;
 import org.hbrs.se1.ws23.uebung3.Container;
 import org.hbrs.se1.ws23.uebung3.persistence.PersistenceException;
 import org.hbrs.se1.ws23.uebung3.persistence.PersistenceStrategyMongoDB;
 import org.hbrs.se1.ws23.uebung3.persistence.PersistenceStrategyStream;
 import org.junit.jupiter.api.*;
-
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 

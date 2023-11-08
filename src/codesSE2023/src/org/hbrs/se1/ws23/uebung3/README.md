@@ -16,3 +16,9 @@
   <br />
   **Singleton Patern**
 ---
+
+### Patterns
+
+- Strategy Pattern
+- Singleton Pattern
+- Decorator

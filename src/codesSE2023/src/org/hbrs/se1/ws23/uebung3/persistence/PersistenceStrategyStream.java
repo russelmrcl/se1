@@ -33,7 +33,7 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
                 objectInputStream = new ObjectInputStream(new FileInputStream(file));
                 connectedOpen = true;
             } catch (IOException ioException) {
-                throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "Failed!");
+                throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "Failed to open a connection!");
             }
         }
     }
@@ -47,21 +47,21 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
                 byteOutputStream.close();
                 connectedOpen = false;
             } catch (IOException e) {
-                throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "Failed!");
+                throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "Failed to open a connection!");
             }
         }
     }
 
     @Override
-    public void save(List<Member> containerInhalt) throws PersistenceException {
+    public void save(List<Member> memberList) throws PersistenceException {
         if (connectedOpen) {
             try {
-                objectOutputStream.writeObject(containerInhalt);
+                objectOutputStream.writeObject(memberList);
                 FileOutputStream fileOutputStream = new FileOutputStream(location);
                 fileOutputStream.write(byteOutputStream.toByteArray());
                 fileOutputStream.close();
             } catch (IOException ioException) {
-                throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "Failed!");
+                throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "Failed to open a connection!");
             }
         }
     }
@@ -71,15 +71,15 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     public List<Member> load() throws PersistenceException {
 
         if (!connectedOpen) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "Failed!");
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "Failed to open a connection!");
         }
 
         try {
             List<Member> memberList = (List<Member>) objectInputStream.readObject();
-            //System.out.println(memberList); Tested to verify if the member list is actually being read
+            //System.out.println(memberList); Test!
             return memberList;
         } catch (Exception exception) {
-            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "Failed!");
+            throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "Failed to open a connection!");
         }
     }
 }

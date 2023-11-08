@@ -12,11 +12,10 @@ public class Container {
     private PersistenceStrategy<Member> persistenceStrategy;
     private static List<Member> memberList = new ArrayList<>();
 
-    private Container() {
+    private Container() {}
 
-    }
-
-    public static Container getInstance() {
+    //Thread-safe
+    public static synchronized Container getInstance() {
         if (instance == null) {
             instance = new Container();
         }

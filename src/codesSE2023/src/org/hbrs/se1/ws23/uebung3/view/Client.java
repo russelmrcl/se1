@@ -15,6 +15,7 @@ public class Client {
         } catch (ContainerException containerException) {
             throw new ContainerException("Failed!");
         }
+
         memberView.dump(container.getCurrentList());
     }
 
