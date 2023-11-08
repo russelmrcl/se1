@@ -4,9 +4,9 @@
 
 ---
 
-### Die Antworten zur Aufgabe 2
+### Die Antworten zur Übung 2
 
-- [se2_ub01_uml.pdf](docs/se1_ub02_uml.pdf)
+- [se1_ub02_uml.pdf](docs/se1_ub02_uml.pdf)
   <br />
   <br />
 **Mein Vorschlag:** Aufgrund von zeitlichen Beschränkungen und kritischen Fehlern würde ich vorschlagen, die Fehler so weit es geht zu minimieren und im Anschluss eine vorläufige Abnahme durchführen. Die abschließende Abnahme wird zu einem späteren Zeitpunkt erfolgen, um sicherzustellen, dass die Qualitätsstandards erfüllt werden.
