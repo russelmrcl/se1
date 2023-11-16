@@ -1,13 +1,13 @@
-package org.hbrs.se1.ws23.uebung3.persistence;
+package org.hbrs.se1.ws23.uebung4.persistence;
 
-import org.hbrs.se1.ws23.uebung3.Member;
+import org.hbrs.se1.ws23.uebung4.UserStories;
 
 import java.io.*;
 import java.util.List;
 
-public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
+public class PersistenceStrategyStream implements PersistenceStrategy<UserStories> {
 
-    private String location = "./src/codesSE2023/src/org/hbrs/se1/ws23/uebung3/docs/objects.ser";
+    private String location = "./src/codesSE2023/src/org/hbrs/se1/ws23/uebung4/docs/objects.ser";
     private ObjectInputStream objectInputStream;
     private ObjectOutputStream objectOutputStream;
     private boolean connectedOpen = false;
@@ -53,10 +53,10 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
     }
 
     @Override
-    public void save(List<Member> memberList) throws PersistenceException {
+    public void save(List<UserStories> userStoriesList) throws PersistenceException {
         if (connectedOpen) {
             try {
-                objectOutputStream.writeObject(memberList);
+                objectOutputStream.writeObject(userStoriesList);
                 FileOutputStream fileOutputStream = new FileOutputStream(location);
                 fileOutputStream.write(byteOutputStream.toByteArray());
                 fileOutputStream.close();
@@ -68,16 +68,15 @@ public class PersistenceStrategyStream implements PersistenceStrategy<Member> {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<Member> load() throws PersistenceException {
+    public List<UserStories> load() throws PersistenceException {
 
         if (!connectedOpen) {
             throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "Failed to open a connection!");
         }
 
         try {
-            List<Member> memberList = (List<Member>) objectInputStream.readObject();
-            System.out.println(memberList);
-            return memberList;
+            List<UserStories> userStoriesList = (List<UserStories>) objectInputStream.readObject();
+            return userStoriesList;
         } catch (Exception exception) {
             throw new PersistenceException(PersistenceException.ExceptionType.ConnectionNotAvailable, "Failed to open a connection!");
         }
