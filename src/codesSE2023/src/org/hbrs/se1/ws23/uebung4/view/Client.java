@@ -2,20 +2,18 @@ package org.hbrs.se1.ws23.uebung4.view;
 
 import org.hbrs.se1.ws23.uebung4.persistence.PersistenceException;
 import org.hbrs.se1.ws23.uebung4.Container;
-import org.hbrs.se1.ws23.uebung4.ContainerException;
 import org.hbrs.se1.ws23.uebung4.UserStories;
 
-
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Client {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static List<UserStories> tmp;
     private static String[] headers = {"ID", "Beschreibung", "Akzeptanzkriterium", "Projekt", "Prio"};
-    private static String[] prompts = {"(e)nter", "(st)ore", "(l)oad", "(d)ump", "(s)earch", "(ex)it", "(h)elp"};
+    private static String[] prompts = {"(e)nter", "(st)ore", "(l)oad", "(d)ump", "(hbrs) dump project Coll@HBRS", "(s)earch", "(ex)it"};
 
     public void consoleUI(Container container) {
 
@@ -24,12 +22,36 @@ public class Client {
         while (scanner.hasNext()) {
             String answer = scanner.next().toLowerCase();
             switch (answer) {
-                case "h": showAllPrompts(); break;
-                case "e": enterUserStories(container); break;
-                case "st": storeUserStories(container); break;
-                case "l" : loadUserStories(container); break;
-                case "s" : searchUserStories(container); break;
-                case "ex" : System.exit(0);
+                case "h":
+                    showAllPrompts();
+                    break;
+                case "e":
+                    enterUserStories(container);
+                    message("enter");
+                    break;
+                case "st":
+                    storeUserStories(container);
+                    message("store");
+                    break;
+                case "l":
+                    loadUserStories(container);
+                    message("load");
+                    break;
+                case "s":
+                    searchUserStories(container);
+                    showAllPrompts();
+                    break;
+                case "d":
+                    dumpUserStories(container);
+                    message("dump");
+                    break;
+                case "hbrs":
+                    dumpUserStoriesHBRS(container);
+                    message("dump project Coll@Hbrs");
+                    break;
+                case "ex":
+                    scanner.close();
+                    System.exit(0);
                 default:
                     System.out.println("Failed!");
             }
@@ -40,6 +62,10 @@ public class Client {
         for (String prompt : prompts) {
             System.out.println(prompt);
         }
+    }
+
+    private static void message(String prompt) {
+        System.out.println(prompt + " was successful! Press (h)elp to see all prompts.");
     }
 
     private static void enterUserStories(Container container) {
@@ -85,15 +111,20 @@ public class Client {
     }
 
     private static void searchUserStories(Container container) {
-        tmp = container.getCurrentList();
-        List<UserStories> searchedUserStories = new ArrayList<>();
         System.out.print("Bitte geben Sie das gesuchte Projekt ein: ");
-        String ps = scanner.next();
-        for (UserStories userStories : tmp) {
-            if (userStories.getProjekt().equals(ps)) {
-                searchedUserStories.add(userStories);
-            }
-        }
-        Table.printTable(headers, searchedUserStories);
+        String searchedProject = scanner.next();
+        Table.printTable(headers, container.getCurrentList().stream().filter(userStories -> userStories.getProjekt().equals(searchedProject)).collect(Collectors.toList()));
+    }
+
+    private static void dumpUserStories(Container container) {
+        Collections.sort(container.getCurrentList());
+        Table.printTable(headers, container.getCurrentList());
+    }
+
+    private static void dumpUserStoriesHBRS(Container container) {
+        List<UserStories> userStoriesHBRS = container.getCurrentList().stream().filter(userStories -> userStories.getProjekt().equals("Coll@HBRS"))
+                .filter(userStories -> userStories.getRisiko() >= 5).collect(Collectors.toList());
+        Table.printTable(headers, userStoriesHBRS);
     }
 }
+

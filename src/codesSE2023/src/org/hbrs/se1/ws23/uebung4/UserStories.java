@@ -2,11 +2,12 @@ package org.hbrs.se1.ws23.uebung4;
 
 import java.io.Serializable;
 
-public class UserStories implements Serializable {
+public class UserStories implements Serializable, Comparable<UserStories> {
 
     private Integer id;
     private String beschreibung;
     private String akzeptanzkriterium;
+    private int risiko;
     private String projekt;
     private double prioValue;
 
@@ -14,6 +15,7 @@ public class UserStories implements Serializable {
         this.id = id;
         this.beschreibung = beschreibung;
         this.akzeptanzkriterium = akzeptanzkriterium;
+        this.risiko = risiko;
         this.projekt = projekt;
         this.prioValue = calculatePriority(aufwand, mehrwert, strafe, risiko);
     }
@@ -47,7 +49,21 @@ public class UserStories implements Serializable {
         return projekt;
     }
 
+    public int getRisiko() {
+        return risiko;
+    }
+
+    public double getPrioValue() {
+        return prioValue;
+    }
+
+
     public Integer getID() {
         return id;
+    }
+
+    @Override
+    public int compareTo(UserStories userStories) {
+        return Double.compare(userStories.getPrioValue(), this.getPrioValue());
     }
 }

@@ -3,7 +3,6 @@ package org.hbrs.se1.ws23.uebung4.view;
 import org.hbrs.se1.ws23.uebung4.UserStories;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class Table {
     public static void printTable(String[] headers, List<UserStories> data) {
