@@ -1,8 +1,9 @@
-package org.hbrs.se1.ws23.uebung4.view;
+package org.hbrs.se1.ws23.uebung4.Controller;
 
-import org.hbrs.se1.ws23.uebung4.persistence.PersistenceException;
-import org.hbrs.se1.ws23.uebung4.Container;
-import org.hbrs.se1.ws23.uebung4.UserStories;
+import org.hbrs.se1.ws23.uebung4.Model.persistence.PersistenceException;
+import org.hbrs.se1.ws23.uebung4.Model.Container;
+import org.hbrs.se1.ws23.uebung4.Model.UserStories;
+import org.hbrs.se1.ws23.uebung4.view.Table;
 
 import java.util.Collections;
 import java.util.List;
@@ -112,7 +113,8 @@ public class Client {
     private static void searchUserStories(Container container) {
         System.out.print("Bitte geben Sie das gesuchte Projekt ein: ");
         String searchedProject = scanner.next();
-        Table.printTable(container.getCurrentList().stream().filter(userStories -> userStories.getProjekt().equals(searchedProject)).collect(Collectors.toList()));
+        Table.printTable(container.getCurrentList().stream().filter(userStories -> userStories.getProjekt()
+                .equals(searchedProject)).collect(Collectors.toList()));
     }
 
     private static void dumpUserStories(Container container) {
@@ -121,8 +123,8 @@ public class Client {
     }
 
     private static void dumpUserStoriesHBRS(Container container) {
-        List<UserStories> userStoriesHBRS = container.getCurrentList().stream().filter(userStories -> userStories.getProjekt().equals("Coll@HBRS"))
-                .filter(userStories -> userStories.getRisiko() >= 5).collect(Collectors.toList());
+        List<UserStories> userStoriesHBRS = container.getCurrentList().stream().filter(userStories -> userStories.getProjekt()
+                .equals("Coll@HBRS")).filter(userStories -> userStories.getRisiko() >= 5).collect(Collectors.toList());
         Table.printTable(userStoriesHBRS);
     }
 }

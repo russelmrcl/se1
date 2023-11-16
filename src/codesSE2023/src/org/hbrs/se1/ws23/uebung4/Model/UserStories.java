@@ -1,4 +1,4 @@
-package org.hbrs.se1.ws23.uebung4;
+package org.hbrs.se1.ws23.uebung4.Model;
 
 import java.io.Serializable;
 
@@ -22,7 +22,7 @@ public class UserStories implements Serializable, Comparable<UserStories> {
 
     private double calculatePriority(int aufwand, int mehrwert, int strafe, int risiko) {
         if (aufwand < 0 || risiko < 0 || mehrwert < 0 || strafe < 0) {
-            throw new IllegalArgumentException("Failed!");
+            throw new IllegalArgumentException("Es sind nur positive Zahlen erlaubt!");
         }
         double result = (double) (mehrwert + strafe) / (aufwand + risiko);
         return (double) Math.round(result * 100) / 100 ;
