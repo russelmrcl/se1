@@ -28,21 +28,13 @@ public class UserStories implements Serializable, Comparable<UserStories> {
         return (double) Math.round(result * 100) / 100 ;
     }
 
-    public String getColumnValue(int columnIndex) {
-        switch (columnIndex) {
-            case 0:
-                return String.valueOf(id);
-            case 1:
-                return beschreibung;
-            case 2:
-                return akzeptanzkriterium;
-            case 3:
-                return projekt;
-            case 4:
-                return String.valueOf(prioValue);
-            default:
-                return "";
-        }
+
+    public String getBeschreibung() {
+        return beschreibung;
+    }
+
+    public String getAkzeptanzkriterium() {
+        return akzeptanzkriterium;
     }
 
     public String getProjekt() {

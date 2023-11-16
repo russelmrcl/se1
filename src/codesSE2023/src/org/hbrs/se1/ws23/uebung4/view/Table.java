@@ -5,14 +5,17 @@ import org.hbrs.se1.ws23.uebung4.UserStories;
 import java.util.List;
 
 public class Table {
-    public static void printTable(String[] headers, List<UserStories> data) {
+
+    private static String[] headers = {"ID", "Beschreibung", "Akzeptanzkriterium", "Projekt", "Prio"};
+
+    public static void printTable(List<UserStories> data) {
         int numColumns = headers.length;
 
         int[] columnWidths = new int[numColumns];
         for (int i = 0; i < numColumns; i++) {
             columnWidths[i] = headers[i].length();
             for (UserStories obj : data) {
-                String value = obj.getColumnValue(i);
+                String value = getColumnValue(obj, i);
                 int cellWidth = value.length();
                 if (cellWidth > columnWidths[i]) {
                     columnWidths[i] = cellWidth;
@@ -29,7 +32,7 @@ public class Table {
 
         for (UserStories obj : data) {
             for (int j = 0; j < numColumns; j++) {
-                String value = obj.getColumnValue(j);
+                String value = getColumnValue(obj, j);
                 System.out.printf("| %-" + (columnWidths[j] + 1) + "s", value);
             }
             System.out.println("|");
@@ -45,5 +48,22 @@ public class Table {
             }
         }
         System.out.println("+");
+    }
+
+    private static String getColumnValue(UserStories story, int columnIndex) {
+        switch (columnIndex) {
+            case 0:
+                return String.valueOf(story.getID());
+            case 1:
+                return story.getBeschreibung();
+            case 2:
+                return story.getAkzeptanzkriterium();
+            case 3:
+                return story.getProjekt();
+            case 4:
+                return String.valueOf(story.getPrioValue());
+            default:
+                return "";
+        }
     }
 }

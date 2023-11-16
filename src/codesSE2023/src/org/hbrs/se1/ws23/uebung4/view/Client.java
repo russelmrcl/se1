@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 public class Client {
 
     private static Scanner scanner = new Scanner(System.in);
-    private static String[] headers = {"ID", "Beschreibung", "Akzeptanzkriterium", "Projekt", "Prio"};
     private static String[] prompts = {"(e)nter", "(st)ore", "(l)oad", "(d)ump", "(hbrs) dump project Coll@HBRS", "(s)earch", "(ex)it"};
 
     public void consoleUI(Container container) {
@@ -39,7 +38,7 @@ public class Client {
                     break;
                 case "s":
                     searchUserStories(container);
-                    showAllPrompts();
+                    message("search");
                     break;
                 case "d":
                     dumpUserStories(container);
@@ -87,7 +86,7 @@ public class Client {
             System.out.println("Bitte geben Sie ein Projekt an.");
             String project = scanner.next();
             container.addMember(new UserStories(id, beschreibung, akzeptanzkriterium, aufwand, mehrwert, strafe, risiko, project));
-            Table.printTable(headers, container.getCurrentList());
+            Table.printTable(container.getCurrentList());
         } catch (Exception exception) {
             throw new RuntimeException();
         }
@@ -104,7 +103,7 @@ public class Client {
     private static void loadUserStories(Container container) {
         try {
             container.load();
-            Table.printTable(headers, container.getCurrentList());
+            //Table.printTable(container.getCurrentList());
         } catch (Exception e) {
             throw new RuntimeException();
         }
@@ -113,18 +112,18 @@ public class Client {
     private static void searchUserStories(Container container) {
         System.out.print("Bitte geben Sie das gesuchte Projekt ein: ");
         String searchedProject = scanner.next();
-        Table.printTable(headers, container.getCurrentList().stream().filter(userStories -> userStories.getProjekt().equals(searchedProject)).collect(Collectors.toList()));
+        Table.printTable(container.getCurrentList().stream().filter(userStories -> userStories.getProjekt().equals(searchedProject)).collect(Collectors.toList()));
     }
 
     private static void dumpUserStories(Container container) {
         Collections.sort(container.getCurrentList());
-        Table.printTable(headers, container.getCurrentList());
+        Table.printTable(container.getCurrentList());
     }
 
     private static void dumpUserStoriesHBRS(Container container) {
         List<UserStories> userStoriesHBRS = container.getCurrentList().stream().filter(userStories -> userStories.getProjekt().equals("Coll@HBRS"))
                 .filter(userStories -> userStories.getRisiko() >= 5).collect(Collectors.toList());
-        Table.printTable(headers, userStoriesHBRS);
+        Table.printTable(userStoriesHBRS);
     }
 }
 
