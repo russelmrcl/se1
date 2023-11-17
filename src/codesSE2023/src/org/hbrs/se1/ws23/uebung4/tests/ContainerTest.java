@@ -1,11 +1,12 @@
-package org.hbrs.se1.ws23.uebung3.test;
+package org.hbrs.se1.ws23.uebung4.tests;
 
-import org.hbrs.se1.ws23.uebung3.ConcreteMember;
-import org.hbrs.se1.ws23.uebung3.Container;
-import org.hbrs.se1.ws23.uebung3.persistence.PersistenceException;
-import org.hbrs.se1.ws23.uebung3.persistence.PersistenceStrategyMongoDB;
-import org.hbrs.se1.ws23.uebung3.persistence.PersistenceStrategyStream;
-import org.junit.jupiter.api.*;
+import org.hbrs.se1.ws23.uebung4.model.persistence.PersistenceException;
+import org.hbrs.se1.ws23.uebung4.model.persistence.PersistenceStrategyMongoDB;
+import org.hbrs.se1.ws23.uebung4.model.Container;
+import org.hbrs.se1.ws23.uebung4.model.UserStories;
+import org.hbrs.se1.ws23.uebung4.model.persistence.PersistenceStrategyStream;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,13 +19,14 @@ class ContainerTest {
     void setUp() {
         container = Container.getInstance();
         persistenceStrategyStream = new PersistenceStrategyStream();
+        persistenceStrategyStream.setLocation("./src/codesSE2023/src/org/hbrs/se1/ws23/uebung4/docs/tests.ser");
     }
-
 
     @Test
     void strategyNotSetTest() {
         container.setStrategy(null);
-        assertDoesNotThrow(() -> container.addMember(new ConcreteMember(1)));
+        assertDoesNotThrow(() -> container.addUserStories(new UserStories(1, "lorem", "ipsum",
+                1, 2, 3, 4, "projekt")));
         assertEquals(1, container.size());
         assertThrows(PersistenceException.class, () -> container.load());
     }
@@ -34,12 +36,14 @@ class ContainerTest {
         PersistenceStrategyMongoDB mongoDBStrategy = new PersistenceStrategyMongoDB();
         container.setStrategy(mongoDBStrategy);
 
-        assertDoesNotThrow(() -> container.addMember(new ConcreteMember(100)));
-        assertDoesNotThrow(() -> container.addMember(new ConcreteMember(200)));
+        assertDoesNotThrow(() -> container.addUserStories(new UserStories(100, "lorem", "ipsum",
+                1, 2, 3, 4, "projekt")));
+        assertDoesNotThrow(() -> container.addUserStories(new UserStories(200, "lorem", "ipsum",
+                1, 2, 3, 4, "projekt")));
         assertThrows(UnsupportedOperationException.class, () -> container.store());
 
-        assertEquals("Member-Objekt geloescht!", container.deleteMember(100));
-        assertEquals("Member-Objekt geloescht!", container.deleteMember(200));
+        assertEquals("UserStories-Objekt geloescht!", container.deleteUserStories(100));
+        assertEquals("UserStories-Objekt geloescht!", container.deleteUserStories(200));
     }
 
     @Test
@@ -48,20 +52,21 @@ class ContainerTest {
         assertThrows(PersistenceException.class, () -> container.load());
     }
 
-
     @Test
     void storeAndLoadTest() {
         container.setStrategy(persistenceStrategyStream);
 
         //Objekt hinzufügen, Liste persistent abspeichern
-        assertDoesNotThrow(() -> container.addMember(new ConcreteMember(2)));
-        assertDoesNotThrow(() -> container.addMember(new ConcreteMember(3)));
+        assertDoesNotThrow(() -> container.addUserStories(new UserStories(2, "lorem", "ipsum",
+                1, 2, 3, 4, "projekt")));
+        assertDoesNotThrow(() -> container.addUserStories(new UserStories(3, "lorem", "ipsum",
+                1, 2, 3, 4, "projekt")));
         assertDoesNotThrow(() -> container.store());
         assertDoesNotThrow(() -> container.load());
         assertEquals(3, container.size());
 
         //Objekt aus Container löschen und Liste wieder einladen.
-        assertEquals("Member-Objekt geloescht!", container.deleteMember(3));
+        assertEquals("UserStories-Objekt geloescht!", container.deleteUserStories(3));
         assertDoesNotThrow(() -> container.store());
         assertDoesNotThrow(() -> container.load());
         assertEquals(2, container.size());

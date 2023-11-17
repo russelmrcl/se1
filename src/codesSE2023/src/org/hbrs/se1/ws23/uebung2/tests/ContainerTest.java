@@ -1,4 +1,4 @@
-package org.hbrs.se1.ws23.uebung2.test;
+package org.hbrs.se1.ws23.uebung2.tests;
 
 import org.hbrs.se1.ws23.uebung2.ConcreteMember;
 import org.hbrs.se1.ws23.uebung2.Container;

@@ -1,6 +1,6 @@
-package org.hbrs.se1.ws23.uebung4.Model.persistence;
+package org.hbrs.se1.ws23.uebung4.model.persistence;
 
-import org.hbrs.se1.ws23.uebung4.Model.UserStories;
+import org.hbrs.se1.ws23.uebung4.model.UserStories;
 
 import java.io.*;
 import java.util.List;

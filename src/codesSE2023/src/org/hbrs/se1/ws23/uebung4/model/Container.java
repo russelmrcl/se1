@@ -1,7 +1,7 @@
-package org.hbrs.se1.ws23.uebung4.Model;
+package org.hbrs.se1.ws23.uebung4.model;
 
-import org.hbrs.se1.ws23.uebung4.Model.persistence.PersistenceException;
-import org.hbrs.se1.ws23.uebung4.Model.persistence.PersistenceStrategy;
+import org.hbrs.se1.ws23.uebung4.model.persistence.PersistenceException;
+import org.hbrs.se1.ws23.uebung4.model.persistence.PersistenceStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,23 +26,23 @@ public class Container {
         this.persistenceStrategy = persistenceStrategy;
     }
 
-    public void addMember(UserStories newMember) throws ContainerException {
-        for (UserStories member : userStoriesList) {
-            if (member.getID().equals(newMember.getID())) {
-                throw new ContainerException("Das UserStories-Objekt mit der ID " + newMember.getID() + " ist bereits vorhanden!");
+    public void addUserStories(UserStories newUserStories) throws ContainerException {
+        for (UserStories userStories : userStoriesList) {
+            if (userStories.getID().equals(newUserStories.getID())) {
+                throw new ContainerException("Das UserStories-Objekt mit der ID " + newUserStories.getID() + " ist bereits vorhanden!");
             }
         }
-        userStoriesList.add(newMember);
+        userStoriesList.add(newUserStories);
     }
 
-    public String deleteMember(Integer id) {
+    public String deleteUserStories(Integer id) {
 
         if (userStoriesList.isEmpty()) {
             throw new IllegalArgumentException("Die Liste is leer");
         }
-        for (UserStories member : userStoriesList) {
-            if (member.getID().equals(id)) {
-                userStoriesList.remove(member);
+        for (UserStories userStories : userStoriesList) {
+            if (userStories.getID().equals(id)) {
+                userStoriesList.remove(userStories);
                 return "UserStories-Objekt geloescht!";
             }
         }
@@ -54,8 +54,8 @@ public class Container {
     }
 
     public void dump() {
-        for (UserStories member : userStoriesList) {
-            System.out.println(member.toString());
+        for (UserStories userStories : userStoriesList) {
+            System.out.println(userStories.toString());
         }
     }
 
@@ -63,6 +63,9 @@ public class Container {
         return userStoriesList.size();
     }
 
+    public boolean isEmpty() {
+        return this.size() == 0;
+    }
 
     public void store() throws PersistenceException {
         if (persistenceStrategy == null) {

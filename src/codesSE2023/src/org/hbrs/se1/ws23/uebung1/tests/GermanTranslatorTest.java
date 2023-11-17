@@ -1,4 +1,4 @@
-package org.hbrs.se1.ws23.uebung1.test;
+package org.hbrs.se1.ws23.uebung1.tests;
 
 import org.hbrs.se1.ws23.uebung1.control.GermanTranslator;
 import org.junit.jupiter.api.BeforeEach;

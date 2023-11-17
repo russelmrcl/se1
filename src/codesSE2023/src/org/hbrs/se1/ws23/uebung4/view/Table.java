@@ -1,6 +1,6 @@
 package org.hbrs.se1.ws23.uebung4.view;
 
-import org.hbrs.se1.ws23.uebung4.Model.UserStories;
+import org.hbrs.se1.ws23.uebung4.model.UserStories;
 
 import java.util.List;
 

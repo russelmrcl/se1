@@ -1,4 +1,4 @@
-package org.hbrs.se1.ws23.uebung4.Model;
+package org.hbrs.se1.ws23.uebung4.model;
 
 import java.io.Serializable;
 
