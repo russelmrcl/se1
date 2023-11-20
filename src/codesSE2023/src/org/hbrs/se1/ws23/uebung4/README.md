@@ -78,7 +78,7 @@
       <br />
       <br />
 - **Epic:** Social Networking
-- **User Story 7:** Als Benutzer möchte ich anderen Benutzern folgen können, um ihre Aktivitäten und Beiträge zu sehen.
+- **User Story 8:** Als Benutzer möchte ich anderen Benutzern folgen können, um ihre Aktivitäten und Beiträge zu sehen.
 - **Mehrwertschätzung:** Mittel
 - **Aufwandsschätzung:** 20
 - **Akzeptanzkriterium:**
