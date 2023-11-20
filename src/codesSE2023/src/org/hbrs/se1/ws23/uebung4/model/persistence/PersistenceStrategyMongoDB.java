@@ -2,7 +2,7 @@ package org.hbrs.se1.ws23.uebung4.model.persistence;
 
 import java.util.List;
 
-public class PersistenceStrategyMongoDB<Member> implements PersistenceStrategy<Member> {
+public class PersistenceStrategyMongoDB<UserStories> implements PersistenceStrategy<UserStories> {
 
     @Override
     public void openConnection() throws PersistenceException {
@@ -15,13 +15,13 @@ public class PersistenceStrategyMongoDB<Member> implements PersistenceStrategy<M
     }
 
     @Override
-    public void save(List<Member> member) {
+    public void save(List<UserStories> member) {
         throw new UnsupportedOperationException("Not implemented!");
 
     }
 
     @Override
-    public List<Member> load() {
+    public List<UserStories> load() {
         throw new UnsupportedOperationException("Not implemented!");
     }
 }

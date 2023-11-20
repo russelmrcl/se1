@@ -58,4 +58,16 @@ public class UserStories implements Serializable, Comparable<UserStories> {
     public int compareTo(UserStories userStories) {
         return Double.compare(userStories.getPrioValue(), this.getPrioValue());
     }
+
+    @Override
+    public String toString() {
+        return "UserStories{" +
+                "id=" + id +
+                ", beschreibung='" + beschreibung + '\'' +
+                ", akzeptanzkriterium='" + akzeptanzkriterium + '\'' +
+                ", risiko=" + risiko +
+                ", projekt='" + projekt + '\'' +
+                ", prioValue=" + prioValue +
+                '}';
+    }
 }

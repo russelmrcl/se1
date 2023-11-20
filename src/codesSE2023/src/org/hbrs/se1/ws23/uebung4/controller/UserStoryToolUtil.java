@@ -96,7 +96,7 @@ public class UserStoryToolUtil {
 
         if (!container.getCurrentList().stream().anyMatch(userStory ->
                 userStory.getProjekt().equals("Coll@HBRS"))) {
-            throw new RuntimeException("Das Projekt Coll@HBRS existiert nicht!!");
+            throw new RuntimeException("Das Projekt Coll@HBRS existiert nicht!");
         }
 
         List<UserStories> userStoriesHBRS = container.getCurrentList().stream().filter(userStories -> userStories.getProjekt()
