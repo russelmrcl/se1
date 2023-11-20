@@ -10,7 +10,7 @@
   <br />
   <br />
   *b.) Es soll dann ihre nächste Aufgabe sein, mögliche Anforderungen an dieses Portal durch acht aussagekräftige User Stories niederzuschreiben, 
- um die Ziele des Präsidenten zu konkretisieren. Gehen sie wie folgt vor:*
+ um die Ziele des Präsidenten zu konkretisieren.*
   <br />
   <br />
 
