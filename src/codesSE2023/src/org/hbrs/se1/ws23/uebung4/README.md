@@ -2,6 +2,11 @@
 
 ### Author: Russel Marcelo / rmarce2s
 
+### Anmerkung zu Augfabe 4.2
+
+- Es ist schwierig, einen Client-Test für die Methoden in der `UserStoryToolUtil` Klasse
+durchzuführen, da sie keine Rückgabewerte besitzen.
+
 ---
 
 ### Die Antworten zur Übung 4
