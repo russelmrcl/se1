@@ -7,6 +7,12 @@
 - Es ist schwierig, einen Client-Test für die Methoden in der `UserStoryToolUtil` Klasse
 durchzuführen, da sie keine Rückgabewerte besitzen.
 
+### Notizen:
+
+- **Model:** verwaltung und Speicherung von Daten
+- **View:** Ausgabe der Daten
+- **Controller:** Eingabe von Daten und die Steuerung des Programms
+
 ---
 
 ### Die Antworten zur Übung 4

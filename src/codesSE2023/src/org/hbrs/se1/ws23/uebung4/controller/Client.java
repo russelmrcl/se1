@@ -14,6 +14,7 @@ public class Client {
         this.container = container;
     }
 
+    //TODO: Command Pattern
     public void consoleUI() {
         System.out.println("Welcome to the UserStory-Tool by Russel Marcelo! Press (h)elp to see all prompts.");
         System.out.println("> befehl");

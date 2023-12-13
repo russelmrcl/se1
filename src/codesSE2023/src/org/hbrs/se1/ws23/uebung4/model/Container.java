@@ -53,12 +53,6 @@ public class Container {
         return userStoriesList;
     }
 
-    public void dump() {
-        for (UserStories userStories : userStoriesList) {
-            System.out.println(userStories.toString());
-        }
-    }
-
     public int size() {
         return userStoriesList.size();
     }
