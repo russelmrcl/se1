@@ -1,5 +1,7 @@
 ## Uebung 5
 
+### Author: Russel Marcelo / rmarce2s
+
 ---
 
 #### Use Case Diagram

@@ -1,5 +1,7 @@
 ## Uebung 6
 
+### Author: Russel Marcelo / rmarce2s
+
 ---
 
 #### Use Case

@@ -1,5 +1,7 @@
 ## Uebung 7
 
+### Author: Russel Marcelo / rmarce2s
+
 ---
 
 #### Use Case Diagram & OOKA
