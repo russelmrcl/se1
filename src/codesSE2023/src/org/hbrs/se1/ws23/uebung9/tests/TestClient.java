@@ -39,6 +39,8 @@ class TestClient {
     @Test
     void getBytesTest() {
         assertEquals(1279, rootDocument.getBytes());
+        rootDocument.removeDocument(textDoc1);
+        assertEquals(1268, rootDocument.getBytes());
     }
 
     @Test
